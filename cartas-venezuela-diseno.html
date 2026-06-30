@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cartas para Venezuela</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#0e1730; font-family:Georgia,'Times New Roman',serif; min-height:100vh; overflow-x:hidden; }
+  #stars { position:fixed; inset:0; width:100%; height:100%; z-index:0; }
+  .wrap { position:relative; z-index:2; text-align:center; padding:60px 24px 30px; }
+  .eyebrow { font-family:'Courier New',monospace; letter-spacing:3px; font-size:13px; color:#CBA45B; }
+  .title { font-size:40px; color:#F3EDE0; margin-top:16px; line-height:1.1; }
+  .flag { display:flex; align-items:center; justify-content:center; gap:10px; margin:16px 0; }
+  .flag span { width:26px; height:5px; border-radius:1px; }
+  .sub { font-size:17px; color:rgba(243,237,224,.72); max-width:440px; margin:0 auto; line-height:1.5; }
+  #deckzone { position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; padding:40px 20px 60px; }
+  #deck { position:relative; width:200px; height:230px; cursor:pointer; }
+  #count { font-family:'Courier New',monospace; font-size:13px; letter-spacing:1px; color:#CBA45B; margin-top:28px; opacity:.85; }
+  #reveal { position:fixed; inset:0; z-index:10; display:none; align-items:center; justify-content:center; padding:30px; background:rgba(8,12,26,.65); }
+  #revealCard { max-width:470px; width:100%; background:#F6EFDD; border-radius:6px; padding:44px 38px; text-align:center; box-shadow:0 18px 50px rgba(0,0,0,.5); transform:scale(.9); transition:transform .4s ease; border:1px solid #e3d6b8; position:relative; }
+  .topflag { position:absolute; top:0; left:0; right:0; height:5px; border-radius:6px 6px 0 0; opacity:.45;
+    background:repeating-linear-gradient(45deg,#C8434F 0 12px,#F6EFDD 12px 24px,#3258B0 24px 36px,#F6EFDD 36px 48px,#E8C24A 48px 60px,#F6EFDD 60px 72px); }
+  .para-ti { font-family:'Courier New',monospace; letter-spacing:2px; font-size:11px; color:#9a7b32; margin-top:8px; }
+  #msg { font-size:20px; line-height:1.65; color:#2a2018; margin:18px 0 8px; }
+  #sig { font-family:'Courier New',monospace; font-size:13px; color:#9a7b32; margin-top:18px; }
+  #again { margin-top:24px; background:none; border:1px solid #CBA45B; color:#82182F; font-family:'Courier New',monospace; letter-spacing:1px; font-size:12px; padding:10px 22px; border-radius:6px; cursor:pointer; }
+</style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+
+  <div class="wrap">
+    <div class="eyebrow">CARTAS PARA VENEZUELA</div>
+    <div class="title">Toma una carta</div>
+    <div class="flag"><span style="background:#E8C24A"></span><span style="background:#3258B0"></span><span style="background:#C8434F"></span></div>
+    <div class="sub">Respira. Piensa en lo que tu corazón necesita oír hoy. Toca el mazo y deja que una carta te encuentre.</div>
+  </div>
+
+  <div id="deckzone">
+    <div id="deck"></div>
+    <div id="count"></div>
+  </div>
+
+  <div id="reveal">
+    <div id="revealCard">
+      <div class="topflag"></div>
+      <div class="para-ti">PARA TI</div>
+      <p id="msg"></p>
+      <p id="sig"></p>
+      <button id="again">TOMAR OTRA →</button>
+    </div>
+  </div>
+
+<script>
+/* =========================================================================
+   NOTA PARA CLAUDE CODE:
+   Estas "cards" son CARTAS DE EJEMPLO solo para la demostración.
+   En la versión real, esto debe venir de la BASE DE DATOS:
+   - Cuando el usuario toca el mazo, el servidor elige UNA carta al azar
+     de entre las cartas APROBADAS (no cargar todas).
+   - "TOTAL" debe ser el número real de cartas aprobadas en la base de datos.
+   ========================================================================= */
+var cards = [
+  {m:"No te conozco, pero hoy pienso en ti. Sé que el suelo se llevó cosas que no volverán. Llóralas todo lo que necesites. Y cuando puedas, recuerda: no estás sola en esta oscuridad.", s:"— Una venezolana en España"},
+  {m:"Hay días en que la vida se vuelve irreconocible de un segundo a otro. Hoy es uno de esos para ti. No tienes que ser fuerte. Solo respira. Mañana volveremos a sostenerte.", s:"— Una migrante en Madrid"},
+  {m:"Tu tierra tiembla y tú con ella. Pero piensa: ese mismo suelo ha visto a tu gente levantarse mil veces. Y se volverá a levantar. Despacio. Contigo dentro.", s:"— Para ti, con amor"},
+  {m:"Para ti, que hoy cuidas a otros mientras tu propio corazón está roto: también mereces que alguien te cuide. Deja que estas palabras lo hagan, aunque sea por un instante.", s:"— Una hermana de lejos"},
+  {m:"Lo que sientes hoy es demasiado para cargarlo de pie. Siéntate. Respira. Y recuerda que el dolor más grande también encuentra, con el tiempo, dónde descansar.", s:"— Una amiga que no conoces"}
+];
+var TOTAL = 347; /* En la versión real: número real de cartas aprobadas */
+
+function sealSVG(){
+  return '<g>'
+    + '<circle cx="100" cy="80" r="17" fill="#000" opacity=".18"/>'
+    + '<circle cx="100" cy="79" r="16" fill="#7d1620"/>'
+    + '<circle cx="100" cy="79" r="16" fill="#9e1b22" opacity=".5"/>'
+    + '<path d="M100 88 C93 82.5 87.5 78 87.5 73 C87.5 69.5 91 67.8 93.8 70 C95.4 71.3 100 74.5 100 74.5 C100 74.5 104.6 71.3 106.2 70 C109 67.8 112.5 69.5 112.5 73 C112.5 78 107 82.5 100 88 Z" fill="#F2C94C"/>'
+    + '<path d="M100 88 C93 82.5 87.5 78 87.5 73 C87.5 69.5 91 67.8 93.8 70 C95.4 71.3 100 74.5 100 74.5 C100 74.5 104.6 71.3 106.2 70 C109 67.8 112.5 69.5 112.5 73 C112.5 78 107 82.5 100 88 Z" fill="#E8B53A" opacity=".5"/>'
+    + '<ellipse cx="95" cy="73" rx="5" ry="3" fill="#fff" opacity=".25"/>'
+    + '</g>';
+}
+function envSVG(top){
+  return '<svg width="200" height="150" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">'
+    + '<rect x="2" y="2" width="196" height="146" rx="6" fill="#EFE6CF" stroke="#cdbf9e" stroke-width="1.2"/>'
+    + (top? '<rect x="2" y="2" width="196" height="146" rx="6" fill="#000" opacity=".015"/>':'')
+    + '<path d="M2 8 L100 84 L198 8" fill="#E7DBBE" stroke="#cdbf9e" stroke-width="1.2"/>'
+    + '<path d="M2 8 L100 84 L198 8" fill="#000" opacity=".05"/>'
+    + (top? sealSVG() : '')
+    + '</svg>';
+}
+var deck=document.getElementById('deck');
+function buildDeck(){
+  deck.innerHTML='';
+  var layers=[{x:14,y:18,r:-5,o:.5},{x:-12,y:12,r:4,o:.6},{x:7,y:7,r:-2,o:.8},{x:-4,y:3,r:2,o:.92},{x:0,y:0,r:0,o:1}];
+  for(var i=0;i<layers.length;i++){
+    var L=layers[i], top=(i===layers.length-1);
+    var d=document.createElement('div');
+    d.style.cssText="position:absolute;left:0;top:0;width:200px;transform:translate("+L.x+"px,"+L.y+"px) rotate("+L.r+"deg);opacity:"+L.o+";filter:drop-shadow(0 6px 12px rgba(0,0,0,.35));transition:transform .2s ease;";
+    d.innerHTML=envSVG(top);
+    deck.appendChild(d);
+  }
+  deck.onmouseenter=function(){deck.lastChild.style.transform="translate(0,-10px) rotate(0deg)";};
+  deck.onmouseleave=function(){deck.lastChild.style.transform="translate(0,0) rotate(0deg)";};
+}
+buildDeck();
+document.getElementById('count').textContent=TOTAL+" cartas escritas con amor";
+
+var rv=document.getElementById('reveal'), rc=document.getElementById('revealCard');
+function drawRandom(){
+  /* En la versión real: pedir al servidor una carta aleatoria de la base de datos */
+  var c=cards[Math.floor(Math.random()*cards.length)];
+  document.getElementById('msg').textContent=c.m;
+  document.getElementById('sig').textContent=c.s;
+  rv.style.display='flex';
+  rc.style.transform='scale(.9)';
+  requestAnimationFrame(function(){rc.style.transform='scale(1)';});
+}
+deck.onclick=drawRandom;
+document.getElementById('again').onclick=function(){
+  rc.style.transform='scale(.9)';
+  setTimeout(function(){rv.style.display='none';},250);
+};
+
+var cv=document.getElementById('stars'), ctx=cv.getContext('2d'), stars=[];
+function resize(){cv.width=window.innerWidth;cv.height=window.innerHeight;stars=[];for(var i=0;i<150;i++){stars.push({x:Math.random()*cv.width,y:Math.random()*cv.height,r:Math.random()*1.6+.3,a:Math.random(),sp:Math.random()*.02+.004});}}
+function draw(){ctx.clearRect(0,0,cv.width,cv.height);for(var i=0;i<stars.length;i++){var s=stars[i];s.a+=s.sp;var o=.3+Math.abs(Math.sin(s.a))*.6;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,6.3);ctx.fillStyle='rgba(243,237,224,'+o+')';ctx.fill();}requestAnimationFrame(draw);}
+resize();draw();window.addEventListener('resize',resize);
+</script>
+</body>
+</html>

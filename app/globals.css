@@ -1,0 +1,80 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { max-width:100vw; }
+body { background:#0e1730; font-family:Georgia,'Times New Roman',serif; min-height:100vh; overflow-x:hidden; }
+a { color: inherit; }
+
+/* =========================================================================
+   Estilos originales del diseño (página principal "Toma una carta")
+   ========================================================================= */
+#stars { position:fixed; inset:0; width:100%; height:100%; z-index:0; }
+.wrap { position:relative; z-index:2; text-align:center; padding:60px 24px 30px; }
+.eyebrow { font-family:'Courier New',monospace; letter-spacing:3px; font-size:13px; color:#CBA45B; }
+.title { font-size:40px; color:#F3EDE0; margin-top:16px; line-height:1.1; }
+.flag { display:flex; align-items:center; justify-content:center; gap:10px; margin:16px 0; }
+.flag span { width:26px; height:5px; border-radius:1px; }
+.sub { font-size:17px; color:rgba(243,237,224,.72); max-width:440px; margin:0 auto; line-height:1.5; }
+#deckzone { position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; padding:40px 20px 60px; }
+#deck { position:relative; width:200px; height:230px; cursor:pointer; }
+#count { font-family:'Courier New',monospace; font-size:13px; letter-spacing:1px; color:#CBA45B; margin-top:28px; opacity:.85; }
+#reveal { position:fixed; inset:0; z-index:10; display:none; align-items:center; justify-content:center; padding:30px; background:rgba(8,12,26,.65); }
+#revealCard { max-width:470px; width:100%; background:#F6EFDD; border-radius:6px; padding:44px 38px; text-align:center; box-shadow:0 18px 50px rgba(0,0,0,.5); transform:scale(.9); transition:transform .4s ease; border:1px solid #e3d6b8; position:relative; }
+.topflag { position:absolute; top:0; left:0; right:0; height:5px; border-radius:6px 6px 0 0; opacity:.45;
+  background:repeating-linear-gradient(45deg,#C8434F 0 12px,#F6EFDD 12px 24px,#3258B0 24px 36px,#F6EFDD 36px 48px,#E8C24A 48px 60px,#F6EFDD 60px 72px); }
+.para-ti { font-family:'Courier New',monospace; letter-spacing:2px; font-size:11px; color:#9a7b32; margin-top:8px; }
+#msg { font-size:20px; line-height:1.65; color:#2a2018; margin:18px 0 8px; white-space:pre-wrap; }
+#sig { font-family:'Courier New',monospace; font-size:13px; color:#9a7b32; margin-top:18px; }
+#again { margin-top:24px; background:none; border:1px solid #CBA45B; color:#82182F; font-family:'Courier New',monospace; letter-spacing:1px; font-size:12px; padding:10px 22px; border-radius:6px; cursor:pointer; }
+.footerlink { position:relative; z-index:2; text-align:center; padding-bottom:50px; }
+.footerlink a { font-family:'Courier New',monospace; font-size:12px; letter-spacing:1px; color:#CBA45B; opacity:.8; border-bottom:1px solid rgba(203,164,91,.4); padding-bottom:2px; }
+.footerlink a:hover { opacity:1; }
+.emptystate { font-size:17px; line-height:1.6; color:#5a4a32; }
+
+/* =========================================================================
+   Estilos compartidos para "Escribir una carta" y el panel de moderación
+   ========================================================================= */
+.page-shell { position:relative; z-index:2; max-width:620px; margin:0 auto; padding:50px 22px 70px; }
+.page-eyebrow { font-family:'Courier New',monospace; letter-spacing:3px; font-size:13px; color:#CBA45B; text-align:center; }
+.page-title { font-size:32px; color:#F3EDE0; margin-top:14px; line-height:1.2; text-align:center; }
+.page-sub { font-size:16px; color:rgba(243,237,224,.72); max-width:480px; margin:14px auto 0; line-height:1.55; text-align:center; }
+
+.example-card { background:#F6EFDD; border-radius:6px; padding:36px 30px; margin:36px 0; border:1px solid #e3d6b8; box-shadow:0 14px 36px rgba(0,0,0,.35); position:relative; }
+.example-card .topflag { position:absolute; top:0; left:0; right:0; height:5px; border-radius:6px 6px 0 0; opacity:.45;
+  background:repeating-linear-gradient(45deg,#C8434F 0 12px,#F6EFDD 12px 24px,#3258B0 24px 36px,#F6EFDD 36px 48px,#E8C24A 48px 60px,#F6EFDD 60px 72px); }
+.example-card .para-ti { font-family:'Courier New',monospace; letter-spacing:2px; font-size:11px; color:#9a7b32; margin-top:8px; }
+.example-card p.msg { font-size:18px; line-height:1.6; color:#2a2018; margin:16px 0 6px; }
+.example-card p.sig { font-family:'Courier New',monospace; font-size:13px; color:#9a7b32; margin-top:16px; }
+.example-label { text-align:center; font-family:'Courier New',monospace; font-size:11px; letter-spacing:2px; color:#CBA45B; opacity:.75; margin-top:34px; }
+
+.cv-form { margin-top:18px; display:flex; flex-direction:column; gap:18px; }
+.cv-field label { display:block; font-family:'Courier New',monospace; font-size:12px; letter-spacing:1px; color:#CBA45B; margin-bottom:8px; }
+.cv-field textarea,
+.cv-field input[type="text"] {
+  width:100%; background:#F6EFDD; border:1px solid #cdbf9e; border-radius:6px; padding:14px;
+  font-family:Georgia,'Times New Roman',serif; font-size:15px; color:#2a2018; resize:vertical;
+}
+.cv-field textarea { min-height:160px; }
+.cv-checkbox { display:flex; align-items:flex-start; gap:10px; font-size:14px; color:rgba(243,237,224,.85); line-height:1.45; }
+.cv-checkbox input { margin-top:4px; width:16px; height:16px; flex-shrink:0; }
+.cv-submit {
+  margin-top:6px; background:#82182F; color:#F6EFDD; border:none; border-radius:6px; padding:14px 22px;
+  font-family:'Courier New',monospace; letter-spacing:1px; font-size:13px; cursor:pointer;
+}
+.cv-submit:disabled { opacity:.5; cursor:default; }
+.cv-msg { font-size:14px; line-height:1.5; padding:14px 16px; border-radius:6px; }
+.cv-msg.ok { background:rgba(91,168,118,.15); color:#bfe8cd; border:1px solid rgba(91,168,118,.4); }
+.cv-msg.err { background:rgba(200,67,79,.15); color:#f3c3c8; border:1px solid rgba(200,67,79,.4); }
+
+.mod-panel { background:#F6EFDD; border-radius:6px; padding:28px 26px; margin-top:24px; border:1px solid #e3d6b8; }
+.mod-letter { border-bottom:1px solid #e3d6b8; padding:18px 0; }
+.mod-letter:last-child { border-bottom:none; }
+.mod-letter p.msg { font-size:16px; line-height:1.55; color:#2a2018; margin-bottom:8px; white-space:pre-wrap; }
+.mod-letter .meta { font-family:'Courier New',monospace; font-size:11px; color:#9a7b32; letter-spacing:.5px; }
+.mod-actions { display:flex; gap:10px; margin-top:12px; }
+.mod-btn { border:none; border-radius:6px; padding:9px 16px; font-family:'Courier New',monospace; font-size:12px; letter-spacing:1px; cursor:pointer; }
+.mod-btn.approve { background:#3c7a52; color:#fff; }
+.mod-btn.reject { background:#82182F; color:#fff; }
+.mod-btn.add { background:#CBA45B; color:#241a08; }
+.mod-empty { color:#5a4a32; font-size:15px; padding:8px 0; }
+.mod-login { max-width:340px; margin:60px auto; background:#F6EFDD; border-radius:6px; padding:34px 28px; text-align:center; }
+.mod-login input { width:100%; margin-top:16px; padding:12px; border-radius:6px; border:1px solid #cdbf9e; font-size:15px; }
+.mod-login button { margin-top:16px; width:100%; }
