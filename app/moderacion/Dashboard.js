@@ -39,13 +39,21 @@ export default function Dashboard() {
 
   async function decidir(id, estado) {
     setActuando(id);
+    setError("");
     try {
-      await fetch(`/api/moderacion/cartas/${id}`, {
+      const res = await fetch(`/api/moderacion/cartas/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ estado }),
       });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setError(data.error || `No se pudo guardar el cambio (código ${res.status}).`);
+        return;
+      }
       setCartas((prev) => prev.filter((c) => c.id !== id));
+    } catch {
+      setError("No se pudo conectar para guardar el cambio.");
     } finally {
       setActuando(null);
     }
