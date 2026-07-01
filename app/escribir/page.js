@@ -59,18 +59,23 @@ export default function Escribir() {
         como si le hablaras a una sola persona, con calma y cariño.
       </div>
 
-      <div className="example-label">ASÍ SE VERÁ TU CARTA PUBLICADA</div>
-      <div className="example-card">
-        <div className="topflag"></div>
-        <div className="para-ti">PARA TI</div>
-        <p className="msg">
-          El temblor te quitó el suelo bajo los pies, pero no las manos que
-          te sostienen. Desde lejos seguimos pensando en ti. Llora lo que
-          tengas que llorar, descansa lo que tengas que descansar: la misma
-          tierra que tembló te vio nacer, y sabe cómo volver a levantarte.
-        </p>
-        <p className="sig">— Alguien que te manda fuerza desde lejos</p>
-      </div>
+      {!texto && (
+        <>
+          <div className="example-label">ASÍ SE VERÁ TU CARTA PUBLICADA</div>
+          <div className="example-card">
+            <div className="topflag"></div>
+            <div className="para-ti">PARA TI</div>
+            <p className="msg">
+              El temblor te quitó el suelo bajo los pies, pero no las manos
+              que te sostienen. Desde lejos seguimos pensando en ti. Llora lo
+              que tengas que llorar, descansa lo que tengas que descansar: la
+              misma tierra que tembló te vio nacer, y sabe cómo volver a
+              levantarte.
+            </p>
+            <p className="sig">— Alguien que te manda fuerza desde lejos</p>
+          </div>
+        </>
+      )}
 
       {resultado?.ok ? (
         <div className="cv-msg ok">
