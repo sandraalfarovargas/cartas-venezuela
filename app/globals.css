@@ -25,7 +25,7 @@ a { color: inherit; }
 #sig { font-family:'Courier New',monospace; font-size:13px; color:#9a7b32; margin-top:18px; }
 #again { margin-top:24px; background:none; border:1px solid #CBA45B; color:#82182F; font-family:'Courier New',monospace; letter-spacing:1px; font-size:12px; padding:10px 22px; border-radius:6px; cursor:pointer; }
 .footerlink { position:relative; z-index:2; text-align:center; padding-bottom:50px; }
-.footerlink a { font-family:'Courier New',monospace; font-size:12px; letter-spacing:1px; color:#CBA45B; opacity:.8; border-bottom:1px solid rgba(203,164,91,.4); padding-bottom:2px; }
+.footerlink a { font-family:'Courier New',monospace; font-size:16px; letter-spacing:1px; color:#CBA45B; opacity:.9; border-bottom:1px solid rgba(203,164,91,.4); padding-bottom:3px; }
 .footerlink a:hover { opacity:1; }
 .emptystate { font-size:17px; line-height:1.6; color:#5a4a32; }
 
