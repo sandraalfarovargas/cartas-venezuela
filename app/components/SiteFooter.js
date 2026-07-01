@@ -1,7 +1,22 @@
 export default function SiteFooter() {
   return (
     <div className="site-footer">
-      Creado por @sandraalfarovargas y @querenciamail
+      Creado por{" "}
+      <a
+        href="https://www.instagram.com/sandraalfarovargas/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        @sandraalfarovargas
+      </a>{" "}
+      y{" "}
+      <a
+        href="https://www.instagram.com/querenciamail/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        @querenciamail
+      </a>
     </div>
   );
 }

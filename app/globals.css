@@ -27,6 +27,8 @@ a { color: inherit; }
 .footerlink { position:relative; z-index:2; text-align:center; padding-bottom:50px; }
 .footerlink a { font-family:'Courier New',monospace; font-size:16px; letter-spacing:1px; color:#CBA45B; opacity:.9; border-bottom:1px solid rgba(203,164,91,.4); padding-bottom:3px; }
 .site-footer { position:relative; z-index:2; text-align:center; padding:18px 20px 26px; font-family:'Courier New',monospace; font-size:11px; letter-spacing:1px; color:rgba(243,237,224,.45); }
+.site-footer a { color:#CBA45B; text-decoration:underline; text-decoration-color:rgba(203,164,91,.4); }
+.site-footer a:hover { opacity:.85; }
 .footerlink a:hover { opacity:1; }
 .emptystate { font-size:17px; line-height:1.6; color:#5a4a32; }
 
