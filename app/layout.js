@@ -1,4 +1,5 @@
 import "./globals.css";
+import SiteFooter from "./components/SiteFooter";
 
 export const metadata = {
   metadataBase: new URL("https://cartasparavenezuela.com"),
@@ -22,7 +23,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <body>{children}</body>
+      <body>
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }
