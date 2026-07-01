@@ -102,7 +102,7 @@ export default function Escribir() {
               type="text"
               value={firma}
               onChange={(e) => setFirma(e.target.value)}
-              placeholder='Ej. "Una venezolana en Madrid"'
+              placeholder='Ej. "María, una venezolana en Madrid"'
               maxLength={120}
             />
           </div>
