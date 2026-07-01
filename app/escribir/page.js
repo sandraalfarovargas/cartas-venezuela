@@ -64,11 +64,12 @@ export default function Escribir() {
         <div className="topflag"></div>
         <div className="para-ti">PARA TI</div>
         <p className="msg">
-          No te conozco, pero hoy pienso en ti. Sé que el suelo se llevó
-          cosas que no volverán. Llóralas todo lo que necesites. Y cuando
-          puedas, recuerda: no estás sola en esta oscuridad.
+          El temblor te quitó el suelo bajo los pies, pero no las manos que
+          te sostienen. Desde lejos seguimos pensando en ti. Llora lo que
+          tengas que llorar, descansa lo que tengas que descansar: la misma
+          tierra que tembló te vio nacer, y sabe cómo volver a levantarte.
         </p>
-        <p className="sig">— Una venezolana en España</p>
+        <p className="sig">— Alguien que te manda fuerza desde lejos</p>
       </div>
 
       {resultado?.ok ? (
