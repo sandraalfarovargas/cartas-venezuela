@@ -11,7 +11,7 @@ export async function GET(request) {
   const id = params.get("id");
   const estado = params.get("estado");
 
-  if (!id || !["aprobada", "rechazada"].includes(estado)) {
+  if (!id || !["aprobada", "rechazada", "pendiente"].includes(estado)) {
     return NextResponse.json({ error: "Parámetros inválidos." }, { status: 400 });
   }
 
