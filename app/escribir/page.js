@@ -20,6 +20,12 @@ export default function Escribir() {
       setResultado({ error: "Escribe el texto de tu carta." });
       return;
     }
+    if (texto.trim().length < 60) {
+      setResultado({
+        error: "Tu carta es muy corta — cuéntale un poco más a quien la reciba (mínimo 60 caracteres).",
+      });
+      return;
+    }
     if (!permiso) {
       setResultado({ error: "Debes aceptar el permiso de publicación." });
       return;

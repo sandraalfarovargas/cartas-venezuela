@@ -19,6 +19,12 @@ export async function POST(request) {
       { status: 400 }
     );
   }
+  if (texto.length < 60) {
+    return NextResponse.json(
+      { error: "Tu carta es muy corta — cuéntale un poco más a quien la reciba (mínimo 60 caracteres)." },
+      { status: 400 }
+    );
+  }
   if (texto.length > 4000) {
     return NextResponse.json(
       { error: "La carta es demasiado larga." },
