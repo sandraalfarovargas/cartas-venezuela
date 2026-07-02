@@ -1,6 +1,6 @@
 {
-  "name": "cv-scaffold",
-  "version": "0.1.0",
+  "name": "cartas-venezuela",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
