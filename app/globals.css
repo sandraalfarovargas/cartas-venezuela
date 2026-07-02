@@ -48,6 +48,12 @@ a { color: inherit; }
 .example-card p.sig { font-family:'Courier New',monospace; font-size:13px; color:#9a7b32; margin-top:16px; }
 .example-label { text-align:center; font-family:'Courier New',monospace; font-size:11px; letter-spacing:2px; color:#CBA45B; opacity:.75; margin-top:34px; }
 
+.cv-guidelines { text-align:left; max-width:480px; margin:24px auto 0; font-size:14px; line-height:1.6; color:rgba(243,237,224,.78); background:rgba(255,255,255,.04); border:1px solid rgba(203,164,91,.25); border-radius:8px; padding:18px 22px; }
+.cv-guidelines-title { font-family:'Courier New',monospace; font-size:11px; letter-spacing:1.5px; color:#CBA45B; margin-bottom:10px; }
+.cv-guidelines ul { margin:0; padding-left:18px; }
+.cv-guidelines li { margin-bottom:6px; }
+.cv-guidelines .note { margin-top:12px; font-style:italic; opacity:.85; }
+
 .cv-form { margin-top:18px; display:flex; flex-direction:column; gap:18px; }
 .cv-field label { display:block; font-family:'Courier New',monospace; font-size:12px; letter-spacing:1px; color:#CBA45B; margin-bottom:8px; }
 .cv-field textarea,

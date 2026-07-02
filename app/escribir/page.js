@@ -65,6 +65,23 @@ export default function Escribir() {
         como si le hablaras a una sola persona, con calma y cariño.
       </div>
 
+      <div className="cv-guidelines">
+        <div className="cv-guidelines-title">ANTES DE ESCRIBIR</div>
+        <ul>
+          <li>En español, para que cualquier persona pueda sentirse acompañada.</li>
+          <li>
+            Si mencionas tu fe, hazlo con prudencia. Evita el proselitismo
+            religioso: citar versículos con referencia, copiar rezos
+            completos o darle instrucciones religiosas al lector.
+          </li>
+          <li>Sin temas políticos.</li>
+          <li>Sin datos de contacto (redes, teléfono, correo).</li>
+          <li>Sin publicidad ni recaudaciones.</li>
+          <li>Evita promesas absolutas sobre lo que le pasará a alguien.</li>
+        </ul>
+        <p className="note">No tiene que ser perfecta. Solo sincera.</p>
+      </div>
+
       {!texto && (
         <>
           <div className="example-label">ASÍ SE VERÁ TU CARTA PUBLICADA</div>
