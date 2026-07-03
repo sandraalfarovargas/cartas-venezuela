@@ -70,9 +70,10 @@ export default function Escribir() {
         <ul>
           <li>En español, para que cualquier persona pueda sentirse acompañada.</li>
           <li>
-            Si mencionas tu fe, hazlo con prudencia. Evita el proselitismo
-            religioso: citar versículos con referencia, copiar rezos
-            completos o darle instrucciones religiosas al lector.
+            Si mencionas tu fe, hazlo con prudencia. No quieras convertir a
+            nadie a ninguna religión. El foco debe estar en el
+            acompañamiento, no en conseguir seguidores hacia ninguna
+            congregación.
           </li>
           <li>Sin temas políticos.</li>
           <li>Sin datos de contacto (redes, teléfono, correo).</li>
