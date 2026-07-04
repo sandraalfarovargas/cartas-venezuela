@@ -19,9 +19,14 @@ export async function GET(request) {
     .from("cartas")
     .select("id", { count: "exact", head: true });
 
-  if (e1 || e2) {
-    return NextResponse.json({ error: (e1 || e2).message }, { status: 500 });
+  const { count: nuevasConCodigoReal, error: e3 } = await supabase
+    .from("cartas")
+    .select("id", { count: "exact", head: true })
+    .gt("creada_en", "2026-07-04T11:29:00Z");
+
+  if (e1 || e2 || e3) {
+    return NextResponse.json({ error: (e1 || e2 || e3).message }, { status: 500 });
   }
 
-  return NextResponse.json({ conCodigo, total });
+  return NextResponse.json({ conCodigo, total, nuevasConCodigoReal });
 }
