@@ -39,16 +39,20 @@ export async function POST(request) {
   }
 
   const supabase = getSupabaseAdmin();
-  const { error } = await supabase.from("cartas").insert({
-    texto,
-    firma: firma || null,
-    pais: pais || null,
-    estado: "pendiente",
-  });
+  const { data, error } = await supabase
+    .from("cartas")
+    .insert({
+      texto,
+      firma: firma || null,
+      pais: pais || null,
+      estado: "pendiente",
+    })
+    .select("codigo")
+    .single();
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, codigo: data?.codigo || null });
 }

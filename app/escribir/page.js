@@ -10,7 +10,7 @@ export default function Escribir() {
   const [pais, setPais] = useState("");
   const [permiso, setPermiso] = useState(false);
   const [enviando, setEnviando] = useState(false);
-  const [resultado, setResultado] = useState(null); // { ok: true } | { error: "..." }
+  const [resultado, setResultado] = useState(null); // { ok: true, codigo } | { error: "..." }
 
   async function onSubmit(e) {
     e.preventDefault();
@@ -42,7 +42,7 @@ export default function Escribir() {
       if (!res.ok) {
         setResultado({ error: data.error || "Algo salió mal. Intenta de nuevo." });
       } else {
-        setResultado({ ok: true });
+        setResultado({ ok: true, codigo: data.codigo || null });
         setTexto("");
         setFirma("");
         setPais("");
@@ -101,7 +101,20 @@ export default function Escribir() {
       {resultado?.ok ? (
         <div className="cv-msg ok">
           Gracias. Tu carta quedó pendiente de revisión — en cuanto sea
-          aprobada, podrá aparecer para que alguien la reciba.{" "}
+          aprobada, podrá aparecer para que alguien la reciba.
+          {resultado.codigo && (
+            <>
+              <br />
+              <br />
+              Guarda este código: <strong>{resultado.codigo}</strong>
+              <br />
+              Con él puedes consultar más adelante si tu carta fue aprobada
+              y cuántas veces ha sido mostrada, en{" "}
+              <Link href="/estado">cartasparavenezuela.com/estado</Link>.
+            </>
+          )}
+          <br />
+          <br />
           <Link href="/">Volver al inicio →</Link>
         </div>
       ) : (
