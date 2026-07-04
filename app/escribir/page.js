@@ -71,7 +71,8 @@ export default function Escribir() {
           <li>En español, para que cualquier persona pueda sentirse acompañada.</li>
           <li>
             Si mencionas tu fe, hazlo con prudencia. No quieras convertir a
-            nadie a ninguna religión.
+            nadie a ninguna religión. Sin citas bíblicas, ni instrucciones
+            dogmáticas.
           </li>
           <li>Sin temas políticos.</li>
           <li>Sin datos de contacto (redes, teléfono, correo).</li>
