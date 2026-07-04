@@ -186,7 +186,7 @@ export default function Home() {
       </div>
 
       <div className="footerlink">
-        <Link href="/escribir">Escribe tú una carta →</Link>
+        <Link href="/escribir">Escribe una carta →</Link>
       </div>
 
       {revealOpen && (
