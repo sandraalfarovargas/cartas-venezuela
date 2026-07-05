@@ -14,7 +14,7 @@ export async function GET(request) {
   const { data, error } = await supabase
     .from("cartas")
     .select("id, texto, firma, pais, estado, codigo, creada_en")
-    .ilike("firma", `%${firma}%`)
+    .or(`firma.ilike.%${firma}%,texto.ilike.%${firma}%`)
     .order("id", { ascending: true })
     .limit(10);
 
