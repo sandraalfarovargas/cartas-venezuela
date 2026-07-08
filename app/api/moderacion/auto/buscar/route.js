@@ -10,17 +10,37 @@ export async function GET(request) {
 
   const q = request.nextUrl.searchParams.get("q") || "";
 
-  const supabase = getSupabaseAdmin();
-  const { data, error } = await supabase
-    .from("cartas")
-    .select("id, texto, firma, pais, estado, codigo, creada_en")
-    .or(`firma.ilike.%${q}%,texto.ilike.%${q}%`)
-    .order("id", { ascending: true })
-    .limit(10);
+  try {
+    const supabase = getSupabaseAdmin();
 
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    const byFirma = await supabase
+      .from("cartas")
+      .select("id, texto, firma, pais, estado, codigo, creada_en")
+      .ilike("firma", `%${q}%`)
+      .order("id", { ascending: true })
+      .limit(10);
+
+    const byTexto = await supabase
+      .from("cartas")
+      .select("id, texto, firma, pais, estado, codigo, creada_en")
+      .ilike("texto", `%${q}%`)
+      .order("id", { ascending: true })
+      .limit(10);
+
+    if (byFirma.error) {
+      return NextResponse.json({ error: byFirma.error.message }, { status: 500 });
+    }
+    if (byTexto.error) {
+      return NextResponse.json({ error: byTexto.error.message }, { status: 500 });
+    }
+
+    const map = new Map();
+    for (const row of [...byFirma.data, ...byTexto.data]) {
+      map.set(row.id, row);
+    }
+
+    return NextResponse.json({ data: Array.from(map.values()) });
+  } catch (e) {
+    return NextResponse.json({ error: String(e) }, { status: 500 });
   }
-
-  return NextResponse.json({ data });
 }
