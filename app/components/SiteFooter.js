@@ -3,11 +3,11 @@ export default function SiteFooter() {
     <div className="site-footer">
       Creado por{" "}
       <a
-        href="https://www.instagram.com/sandraalfarovargas/"
+        href="https://www.instagram.com/sandraalfarov"
         target="_blank"
         rel="noopener noreferrer"
       >
-        @sandraalfarovargas
+        @sandraalfarov
       </a>{" "}
       y{" "}
       <a
