@@ -9,7 +9,21 @@ export async function GET(request) {
       return NextResponse.json({ error: "No autorizado." }, { status: 401 });
     }
 
-    return NextResponse.json({ paso: "inicio ok" });
+    const supabase = getSupabaseAdmin();
+
+    const { data: original, error: fetchError } = await supabase
+      .from("cartas")
+      .select("id, texto, firma, pais, codigo, estado")
+      .eq("estado", "aprobada")
+      .order("id", { ascending: true })
+      .limit(1)
+      .maybeSingle();
+
+    if (fetchError) {
+      return NextResponse.json({ step: "fetch", error: fetchError.message }, { status: 500 });
+    }
+
+    return NextResponse.json({ step: "fetch-ok", original });
   } catch (e) {
     return NextResponse.json(
       { step: "catch", error: String(e && e.message ? e.message : e) },
