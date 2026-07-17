@@ -22,11 +22,32 @@ export async function GET(request) {
     if (fetchError) {
       return NextResponse.json({ step: "fetch", error: fetchError.message }, { status: 500 });
     }
+    if (!original) {
+      return NextResponse.json({ step: "fetch", error: "sin cartas" }, { status: 404 });
+    }
 
-    return NextResponse.json({ step: "fetch-ok", original });
+    const insertResult = await supabase
+      .from("cartas")
+      .insert({
+        texto: original.texto,
+        firma: original.firma,
+        pais: original.pais,
+        estado: "aprobada",
+        codigo: original.codigo,
+        vistas: 0,
+      })
+      .select("id, codigo, estado, vistas");
+
+    return NextResponse.json({
+      step: "insert-result",
+      hasError: Boolean(insertResult.error),
+      errorMessage: insertResult.error ? insertResult.error.message : null,
+      errorCode: insertResult.error ? insertResult.error.code : null,
+      data: insertResult.data,
+    });
   } catch (e) {
     return NextResponse.json(
-      { step: "catch", error: String(e && e.message ? e.message : e) },
+      { step: "catch", error: String(e && e.message ? e.message : e), stack: String(e && e.stack ? e.stack : "") },
       { status: 500 }
     );
   }
