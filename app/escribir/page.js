@@ -8,6 +8,7 @@ export default function Escribir() {
   const [texto, setTexto] = useState("");
   const [firma, setFirma] = useState("");
   const [pais, setPais] = useState("");
+  const [email, setEmail] = useState("");
   const [permiso, setPermiso] = useState(false);
   const [enviando, setEnviando] = useState(false);
   const [resultado, setResultado] = useState(null); // { ok: true, codigo } | { error: "..." }
@@ -26,6 +27,12 @@ export default function Escribir() {
       });
       return;
     }
+    const emailLimpio = email.trim();
+    const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailLimpio);
+    if (!emailValido) {
+      setResultado({ error: "Escribe un correo electrónico válido." });
+      return;
+    }
     if (!permiso) {
       setResultado({ error: "Debes aceptar el permiso de publicación." });
       return;
@@ -36,7 +43,7 @@ export default function Escribir() {
       const res = await fetch("/api/cartas", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ texto, firma, pais, permiso }),
+        body: JSON.stringify({ texto, firma, pais, email: emailLimpio, permiso }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -46,6 +53,7 @@ export default function Escribir() {
         setTexto("");
         setFirma("");
         setPais("");
+        setEmail("");
         setPermiso(false);
       }
     } catch {
@@ -153,6 +161,22 @@ export default function Escribir() {
               placeholder="Ej. España"
               maxLength={80}
             />
+          </div>
+
+          <div className="cv-field">
+            <label htmlFor="email">Tu correo electrónico *</label>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="tucorreo@ejemplo.com"
+              maxLength={200}
+            />
+            <p className="note">
+              Lo usamos para enviarte tu código de seguimiento y noticias del
+              proyecto. Nunca se publica ni se comparte.
+            </p>
           </div>
 
           <label className="cv-checkbox">

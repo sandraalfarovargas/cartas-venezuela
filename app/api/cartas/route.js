@@ -11,7 +11,16 @@ export async function POST(request) {
   const texto = (body.texto || "").trim();
   const firma = (body.firma || "").trim();
   const pais = (body.pais || "").trim();
+  const email = (body.email || "").trim().toLowerCase();
   const permiso = Boolean(body.permiso);
+
+  const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if (!emailValido) {
+    return NextResponse.json(
+      { error: "Escribe un correo electrónico válido." },
+      { status: 400 }
+    );
+  }
 
   if (!texto) {
     return NextResponse.json(
@@ -45,6 +54,7 @@ export async function POST(request) {
       texto,
       firma: firma || null,
       pais: pais || null,
+      email,
       estado: "pendiente",
     })
     .select("codigo")
