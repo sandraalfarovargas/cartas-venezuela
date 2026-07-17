@@ -10,6 +10,7 @@ export default function Escribir() {
   const [pais, setPais] = useState("");
   const [email, setEmail] = useState("");
   const [permiso, setPermiso] = useState(false);
+  const [consentimientoDatos, setConsentimientoDatos] = useState(false);
   const [enviando, setEnviando] = useState(false);
   const [resultado, setResultado] = useState(null); // { ok: true, codigo } | { error: "..." }
 
@@ -31,6 +32,12 @@ export default function Escribir() {
     const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailLimpio);
     if (!emailValido) {
       setResultado({ error: "Escribe un correo electrónico válido." });
+      return;
+    }
+    if (!consentimientoDatos) {
+      setResultado({
+        error: "Debes autorizar el uso de tu correo electrónico para continuar.",
+      });
       return;
     }
     if (!permiso) {
@@ -55,6 +62,7 @@ export default function Escribir() {
         setPais("");
         setEmail("");
         setPermiso(false);
+        setConsentimientoDatos(false);
       }
     } catch {
       setResultado({ error: "No se pudo enviar. Revisa tu conexión e intenta de nuevo." });
@@ -173,11 +181,19 @@ export default function Escribir() {
               placeholder="tucorreo@ejemplo.com"
               maxLength={200}
             />
-            <p className="note">
-              Lo usamos para enviarte tu código de seguimiento y noticias del
-              proyecto. Nunca se publica ni se comparte.
-            </p>
           </div>
+
+          <label className="cv-checkbox">
+            <input
+              type="checkbox"
+              checked={consentimientoDatos}
+              onChange={(e) => setConsentimientoDatos(e.target.checked)}
+            />
+            Autorizo el uso de mi correo electrónico conforme al Reglamento
+            General de Protección de Datos (RGPD/GDPR) de la Unión Europea.
+            Lo usamos para enviarte tu código de seguimiento y noticias del
+            proyecto. Nunca se publica ni se comparte. *
+          </label>
 
           <label className="cv-checkbox">
             <input
