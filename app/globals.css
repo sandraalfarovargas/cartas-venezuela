@@ -57,7 +57,8 @@ a { color: inherit; }
 .cv-form { margin-top:18px; display:flex; flex-direction:column; gap:18px; }
 .cv-field label { display:block; font-family:'Courier New',monospace; font-size:12px; letter-spacing:1px; color:#CBA45B; margin-bottom:8px; }
 .cv-field textarea,
-.cv-field input[type="text"] {
+.cv-field input[type="text"],
+.cv-field input[type="email"] {
   width:100%; background:#F6EFDD; border:1px solid #cdbf9e; border-radius:6px; padding:14px;
   font-family:Georgia,'Times New Roman',serif; font-size:15px; color:#2a2018; resize:vertical;
 }
