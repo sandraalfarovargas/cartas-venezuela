@@ -189,6 +189,11 @@ export default function Home() {
         <Link href="/escribir">Escribe una carta →</Link>
       </div>
 
+      <div className="footerlink">
+        Consulta el estado de tu carta{" "}
+        <Link href="/estado">aquí</Link>
+      </div>
+
       {revealOpen && (
         <div id="reveal" style={{ display: "flex" }}>
           <div
