@@ -50,7 +50,7 @@ export default function Estado() {
       <div className="page-title">Consulta tu carta</div>
       <div className="page-sub">
         Escribe el código que recibiste al enviar tu carta para saber su
-        estado.
+        estado y cuántas veces fue leída.
       </div>
 
       <form className="cv-form" onSubmit={onSubmit}>
