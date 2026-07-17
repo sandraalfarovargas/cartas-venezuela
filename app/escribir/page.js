@@ -189,8 +189,8 @@ export default function Escribir() {
               checked={consentimientoDatos}
               onChange={(e) => setConsentimientoDatos(e.target.checked)}
             />
-            Acepto que usen mi correo (según la ley europea RGPD) para
-            enviarme mi código y noticias del proyecto. Nunca se publica ni
+            Acepto que usen mi correo para saber noticias de este y otros
+            proyectos de Sandra Alfaro y Querencia Mail. Nunca se publica ni
             se comparte. *
           </label>
 
