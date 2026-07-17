@@ -189,9 +189,10 @@ export default function Escribir() {
               checked={consentimientoDatos}
               onChange={(e) => setConsentimientoDatos(e.target.checked)}
             />
-            Acepto que usen mi correo para saber noticias de este y otros
-            proyectos de Sandra Alfaro y Querencia Mail. Nunca se publica ni
-            se comparte. *
+            Acepto que usen mi correo para el seguimiento de mi carta,
+            noticias de este y otros proyectos similares de Sandra Alfaro y
+            Querencia Mail. Nunca se publica ni se comparte por Reglamento
+            General de Protección de Datos de la UE. *
           </label>
 
           <label className="cv-checkbox">
