@@ -189,10 +189,9 @@ export default function Escribir() {
               checked={consentimientoDatos}
               onChange={(e) => setConsentimientoDatos(e.target.checked)}
             />
-            Autorizo el uso de mi correo electrónico conforme al Reglamento
-            General de Protección de Datos (RGPD/GDPR) de la Unión Europea.
-            Lo usamos para enviarte tu código de seguimiento y noticias del
-            proyecto. Nunca se publica ni se comparte. *
+            Acepto que usen mi correo (según la ley europea RGPD) para
+            enviarme mi código y noticias del proyecto. Nunca se publica ni
+            se comparte. *
           </label>
 
           <label className="cv-checkbox">
