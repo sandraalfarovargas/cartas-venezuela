@@ -189,7 +189,7 @@ export default function Home() {
         <Link href="/escribir">Escribe una carta →</Link>
       </div>
 
-      <div className="footerlink">
+      <div className="footerlink footerlink-status">
         Consulta el estado de tu carta{" "}
         <Link href="/estado">aquí</Link>
       </div>
