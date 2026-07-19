@@ -91,3 +91,24 @@ a { color: inherit; }
 .mod-login { max-width:340px; margin:60px auto; background:#F6EFDD; border-radius:6px; padding:34px 28px; text-align:center; }
 .mod-login input { width:100%; margin-top:16px; padding:12px; border-radius:6px; border:1px solid #cdbf9e; font-size:15px; }
 .mod-login button { margin-top:16px; width:100%; }
+
+/* =========================================================================
+   Aviso de cookies
+   ========================================================================= */
+.cookie-banner {
+  position:fixed; left:0; right:0; bottom:0; z-index:50;
+  background:#161f3d; border-top:1px solid rgba(203,164,91,.35);
+  padding:18px 22px; display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
+  gap:16px; box-shadow:0 -8px 24px rgba(0,0,0,.35);
+}
+.cookie-banner-text {
+  color:rgba(243,237,224,.85); font-size:13.5px; line-height:1.5; max-width:560px; flex:1 1 320px;
+}
+.cookie-banner-text a { color:#CBA45B; text-decoration:underline; text-decoration-color:rgba(203,164,91,.4); }
+.cookie-banner-actions { display:flex; gap:10px; flex-shrink:0; }
+.cookie-btn {
+  border:none; border-radius:6px; padding:10px 18px; font-family:'Courier New',monospace;
+  letter-spacing:1px; font-size:12px; cursor:pointer;
+}
+.cookie-btn.accept { background:#3c7a52; color:#fff; }
+.cookie-btn.reject { background:none; border:1px solid rgba(243,237,224,.4); color:rgba(243,237,224,.85); }

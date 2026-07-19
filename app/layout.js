@@ -1,5 +1,6 @@
 import "./globals.css";
 import SiteFooter from "./components/SiteFooter";
+import CookieConsent from "./components/CookieConsent";
 
 export const metadata = {
   metadataBase: new URL("https://cartasparavenezuela.com"),
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
       <body>
         {children}
         <SiteFooter />
+        <CookieConsent />
       </body>
     </html>
   );
