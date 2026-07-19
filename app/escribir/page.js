@@ -86,14 +86,12 @@ export default function Escribir() {
         <ul>
           <li>En español, para que cualquier persona pueda sentirse acompañada.</li>
           <li>
-            Si mencionas tu fe, hazlo con prudencia. No quieras convertir a
-            nadie a ninguna religión. Sin citas bíblicas, ni instrucciones
-            dogmáticas.
+            Si mencionas tu fe, hazlo con prudencia. Sin citas bíblicas, ni
+            instrucciones dogmáticas.
           </li>
           <li>Sin temas políticos.</li>
           <li>Sin datos de contacto (redes, teléfono, correo).</li>
           <li>Sin publicidad ni recaudaciones.</li>
-          <li>Evita promesas absolutas sobre lo que le pasará a alguien.</li>
         </ul>
         <p className="note">No tiene que ser perfecta. Solo sincera.</p>
       </div>
