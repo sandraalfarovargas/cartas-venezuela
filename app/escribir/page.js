@@ -84,7 +84,7 @@ export default function Escribir() {
       <div className="cv-guidelines">
         <div className="cv-guidelines-title">ANTES DE ESCRIBIR</div>
         <ul>
-          <li>En español, para que cualquier persona pueda sentirse acompañada.</li>
+          <li>En español, para que cualquier persona en Venezuela pueda sentirse acompañada.</li>
           <li>Si mencionas tu fe, hazlo con prudencia.</li>
           <li>Sin proselitismo religioso, ni político.</li>
           <li>Sin dar datos de contacto (redes, teléfono, correo).</li>
