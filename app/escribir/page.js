@@ -85,12 +85,9 @@ export default function Escribir() {
         <div className="cv-guidelines-title">ANTES DE ESCRIBIR</div>
         <ul>
           <li>En español, para que cualquier persona pueda sentirse acompañada.</li>
-          <li>
-            Si mencionas tu fe, hazlo con prudencia. Sin citas bíblicas, ni
-            instrucciones dogmáticas.
-          </li>
-          <li>Sin temas políticos.</li>
-          <li>Sin datos de contacto (redes, teléfono, correo).</li>
+          <li>Si mencionas tu fe, hazlo con prudencia.</li>
+          <li>Sin proselitismo religioso, ni político.</li>
+          <li>Sin dar datos de contacto (redes, teléfono, correo).</li>
           <li>Sin publicidad ni recaudaciones.</li>
         </ul>
         <p className="note">No tiene que ser perfecta. Solo sincera.</p>
