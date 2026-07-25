@@ -13,11 +13,11 @@ export default function SiteFooter() {
       </a>{" "}
       y{" "}
       <a
-        href="https://www.instagram.com/querenciamail/"
+        href="https://www.instagram.com/cartasdequerencia/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        @querenciamail
+        @cartasdequerencia
       </a>
       <br />
       <Link href="/privacidad">Política de privacidad</Link>
