@@ -5,19 +5,19 @@ export default function SiteFooter() {
     <div className="site-footer">
       Creado por{" "}
       <a
-        href="https://www.instagram.com/soysandraalfaro/"
+        href="https://www.instagram.com/sanalfarovargas/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        @soysandraalfaro
+        @sanalfarovargas
       </a>{" "}
       y{" "}
       <a
-        href="https://www.instagram.com/cartasdequerencia/"
+        href="https://www.instagram.com/cartasquerencia/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        @cartasdequerencia
+        @cartasquerencia
       </a>
       <br />
       <Link href="/privacidad">Política de privacidad</Link>
