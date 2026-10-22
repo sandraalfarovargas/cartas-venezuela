@@ -3,21 +3,13 @@ import Link from "next/link";
 export default function SiteFooter() {
   return (
     <div className="site-footer">
-      Creado por{" "}
+      Página creada por{" "}
       <a
-        href="https://www.instagram.com/sanalfarovargas/"
+        href="https://www.linkedin.com/in/sandraalfarovargas/"
         target="_blank"
         rel="noopener noreferrer"
       >
-        @sanalfarovargas
-      </a>{" "}
-      y{" "}
-      <a
-        href="https://www.instagram.com/cartasquerencia/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        @cartasquerencia
+        Sandra Alfaro Vargas
       </a>
       <br />
       <Link href="/privacidad">Política de privacidad</Link>
